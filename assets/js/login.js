@@ -11,6 +11,7 @@ $(function () {
     })
     // 为表单设置验证规则
     var form = layui.form;
+    // var layer = layui.layer;
     form.verify({
         // 自定义了一个叫做 pwd 校验规则
         pwd: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'],
@@ -33,7 +34,7 @@ $(function () {
         e.preventDefault();
         $.ajax({
             type: "post",
-            url: "http://ajax.frontend.itheima.net/api/reguser",
+            url: "/api/reguser",
             data: {
                 username: $("#form_reg [name=username]").val(),
                 password: $("#form_reg [name=password]").val()
@@ -55,7 +56,7 @@ $(function () {
         e.preventDefault();
         $.ajax({
             type: "post",
-            url: "http://ajax.frontend.itheima.net/api/login",
+            url: "/api/login",
             data: $(this).serialize(),
             success: function (res) {
                 console.log(res)
