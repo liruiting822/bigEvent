@@ -39,6 +39,7 @@ $(function () {
                 if (res.status != 0) {
                     return layer.msg("更新用户失败")
                 }
+
                 layer.msg("更新用户成功");
                 window.parent.getUserInfo()
             }

@@ -26,6 +26,7 @@ function getUserInfo() {
         type: "get",
         url: "/my/userinfo",
         success: function (res) {
+            console.log(res);
             // console.log(res)
             if (res.status != 0) {
                 return layer.msg("获取用户信息失败")
@@ -38,15 +39,17 @@ function getUserInfo() {
 }
 // 渲染头像
 function renderAvatar(user) {
+    console.log(user);
     var name = user.nickname || user.username;
     $("#welcome").html("欢迎  " + name);
     // 按需渲染用户头像
-    if (user.user_pic !== null) {
+    if (user.user_pic !== '') {
         $(".text-avatar").hide();
-        $(".layui-nav-img").attr("src", user.user_pic).show();
-
+        $(".layui-nav-img").prop("src", user.user_pic).show();
+    } else {
+        $(".layui-nav-img").hide();
+        var first = name[0].toUpperCase()
+        $(".text-avatar").html(first).show();
     }
-    $(".layui-nav-img").hide();
-    var first = name[0].toUpperCase()
-    $(".text-avatar").html(first).show();
+
 }
